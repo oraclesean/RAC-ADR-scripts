@@ -30,3 +30,23 @@ This script resports a handful of issues that prevent AHF/TFA from managing and 
   - Instance with non-existent ADR
   - Confirms that the expected ADR log directories exist and creates them if missing
   - Checks for the ADR configuration file, verifies that it contains the correct directories, and creates if missing
+
+## adr_check.sh
+Similar to `purge_adr.sh`, this script processes the ADR homes on the host and checks for:
+- ADR library and schema versions match, attempting to resolve any mismatch
+- ADR directories with obsolete schema versions
+- Directories under orphaned CRS homes
+- Directories with incorrect ownership
+- Directories for inactive listeners
+- Directories for SIDs not present in the oratab
+- RDBMS homes with mismatched SID/unique names
+- Multiple ADR homes for a SID or unique name
+- Non-RDBMS ADR homes
+- SID not running on the host
+- Multiple SID in the oratab
+- Missing ADR repositories
+- Missing ADR log/diagnostic directory, missing configuration file
+- ADR configurations with incorrect paths
+
+## NOTE
+`adr_check.sh` and `purge_adr.sh` are similar scripts that were developed to address slightly different needs, but are likely similar if not interchangeable.
